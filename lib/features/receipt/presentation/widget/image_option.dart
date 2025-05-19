@@ -22,35 +22,39 @@ class _ImageOptionState extends State<ImageOption> {
     return Column(
       children: [
         CustomListTile(
+          onTap: () async {
+            await widget.imageController.getImage(
+              widget.imageController.cameraImage,
+            );
+            setState(() {
+              widget.imageState;
+            });
+          },
           title: Text("Take Photo"),
-          child: IconButton(
-            onPressed: () async {
-              await widget.imageController.getImage(
-                widget.imageController.cameraImage,
-              );
-              widget.imageState;
-            },
-            icon: Icon(Icons.camera_alt),
-          ),
+          child: Icon(Icons.camera_alt),
         ),
         CustomListTile(
+          onTap: () async {
+            await widget.imageController.getImage(
+              widget.imageController.galleryImage,
+            );
+            setState(() {
+              widget.imageState;
+            });
+          },
           title: Text("Choose from Gallery"),
-          child: IconButton(
-            onPressed: () async {
-              await widget.imageController.getImage(
-                widget.imageController.galleryImage,
-              );
-              widget.imageState;
-            },
-            icon: Icon(Icons.photo_library),
-          ),
+          child: Icon(Icons.photo_library),
         ),
+
         CustomListTile(
+          // onTap: () async {
+          //   await widget.imageController.getImage(
+          //     widget.imageController.galleryImage,
+          //   );
+          //   widget.imageState;
+          // },
           title: Text("Upload a File"),
-          child: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.insert_drive_file),
-          ),
+          child: Icon(Icons.insert_drive_file),
         ),
       ],
     );

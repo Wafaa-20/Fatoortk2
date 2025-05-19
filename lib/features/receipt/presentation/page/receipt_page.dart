@@ -54,14 +54,9 @@ class _ReceiptPageState extends State<ReceiptPage> {
                                     File(
                                       imagePickerController.selectedImage!.path,
                                     ),
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
-                        // child: Image.asset(
-                        //   "asset/image/onboarding2.jpg",
-                        //   height: 134,
-                        //   width: context.getWidth(),
-                        //   fit: BoxFit.fitWidth,
-                        // ),
                       ),
                       const SizedBox(height: 10),
 
@@ -112,7 +107,6 @@ class _ReceiptPageState extends State<ReceiptPage> {
                 ),
               ),
             ),
-
             ReceiptData(),
             const SizedBox(height: 20),
             CustomButton(onPressed: () {}, child: Text("Save")),

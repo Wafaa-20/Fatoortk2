@@ -53,7 +53,6 @@ class ReceiptData extends StatelessWidget {
             labelText: "Invoice Number",
             controller: receiptController.invoiceNumberController,
           ),
-          SizedBox(height: 20),
         ],
       ),
     );
