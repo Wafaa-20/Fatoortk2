@@ -28,7 +28,10 @@ class _ImageOptionState extends State<ImageOption> {
               await widget.imageController.getImage(
                 widget.imageController.cameraImage,
               );
-              widget.imageState;
+              setState(() {
+                widget.imageState;
+              });
+             
             },
             icon: Icon(Icons.camera_alt),
           ),
@@ -40,7 +43,9 @@ class _ImageOptionState extends State<ImageOption> {
               await widget.imageController.getImage(
                 widget.imageController.galleryImage,
               );
-              widget.imageState;
+              setState(() {
+                widget.imageState;
+              });
             },
             icon: Icon(Icons.photo_library),
           ),
