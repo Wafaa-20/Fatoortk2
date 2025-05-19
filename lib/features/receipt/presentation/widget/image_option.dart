@@ -31,7 +31,22 @@ class _ImageOptionState extends State<ImageOption> {
             });
           },
           title: Text("Take Photo"),
+<<<<<<< HEAD
           child: Icon(Icons.camera_alt),
+=======
+          child: IconButton(
+            onPressed: () async {
+              await widget.imageController.getImage(
+                widget.imageController.cameraImage,
+              );
+              setState(() {
+                widget.imageState;
+              });
+             
+            },
+            icon: Icon(Icons.camera_alt),
+          ),
+>>>>>>> 966ad546b5d5d21f2432c31047fc62f17eb189b6
         ),
         CustomListTile(
           onTap: () async {
@@ -43,7 +58,21 @@ class _ImageOptionState extends State<ImageOption> {
             });
           },
           title: Text("Choose from Gallery"),
+<<<<<<< HEAD
           child: Icon(Icons.photo_library),
+=======
+          child: IconButton(
+            onPressed: () async {
+              await widget.imageController.getImage(
+                widget.imageController.galleryImage,
+              );
+              setState(() {
+                widget.imageState;
+              });
+            },
+            icon: Icon(Icons.photo_library),
+          ),
+>>>>>>> 966ad546b5d5d21f2432c31047fc62f17eb189b6
         ),
 
         CustomListTile(
