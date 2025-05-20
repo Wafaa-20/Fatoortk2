@@ -19,7 +19,6 @@ class ReceiptPage extends StatefulWidget {
 class _ReceiptPageState extends State<ReceiptPage> {
   final receiptController = ReceiptProcessController();
   final imagePickerController = ImagePickerController();
-  String extractedText = "API OR:";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,16 +44,39 @@ class _ReceiptPageState extends State<ReceiptPage> {
                           topRight: Radius.circular(20),
                         ),
                         child:
+                            // receiptController.selectedImage == null
                             imagePickerController.selectedImage == null
                                 ? Text("Please Select image")
-                                : SizedBox(
-                                  height: 134,
-                                  width: context.getWidth(),
-                                  child: Image.file(
-                                    File(
-                                      imagePickerController.selectedImage!.path,
+                                : GestureDetector(
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder:
+                                          (context) => Dialog(
+                                            child: InteractiveViewer(
+                                              child: Image.file(
+                                                File(
+                                                  imagePickerController
+                                                      .selectedImage!
+                                                      .path,
+                                                ),
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                    );
+                                  },
+                                  child: SizedBox(
+                                    height: 134,
+                                    width: context.getWidth(),
+                                    child: Image.file(
+                                      File(
+                                        imagePickerController
+                                            .selectedImage!
+                                            .path,
+                                      ),
+                                      fit: BoxFit.cover,
                                     ),
-                                    fit: BoxFit.cover,
                                   ),
                                 ),
                       ),
@@ -85,11 +107,12 @@ class _ReceiptPageState extends State<ReceiptPage> {
                                           ImageOption(
                                             imageController:
                                                 imagePickerController,
+                                            receiptController:
+                                                receiptController,
                                             imageState: (receipt) {
-                                              setState(() {
-                                                receiptController
-                                                    .fillControllers(receipt!);
-                                              });
+                                              receiptController.fillControllers(
+                                                receipt!,
+                                              );
                                             },
                                           ),
                                         ],
@@ -107,9 +130,14 @@ class _ReceiptPageState extends State<ReceiptPage> {
                 ),
               ),
             ),
-            ReceiptData(),
+            ReceiptData(receiptController: receiptController),
             const SizedBox(height: 20),
-            CustomButton(onPressed: () {}, child: Text("Save")),
+            CustomButton(
+              onPressed: () {
+                receiptController.saveReceipt(context);
+              },
+              child: Text("Save"),
+            ),
           ],
         ),
       ),

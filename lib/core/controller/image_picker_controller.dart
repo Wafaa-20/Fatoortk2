@@ -4,15 +4,13 @@ class ImagePickerController {
   final ImagePicker picker = ImagePicker();
   final cameraImage = (ImageSource.camera);
   final galleryImage = (ImageSource.gallery);
-  XFile? selectedImage;
+  XFile? selectedImage; //selectedImage from camera or gallery
 
-  Future<String?> getImage(ImageSource source) async {
-    final XFile? image = await picker.pickImage(source: source);
-    if (image != null) {
-      selectedImage = image;
-      return image.path;
-    } else {
-      return null;
+  Future<XFile?> getImage(ImageSource source) async {
+    final pickedImage = await picker.pickImage(source: source);
+    if (pickedImage != null) {
+      selectedImage = pickedImage;
     }
+    return selectedImage;
   }
 }

@@ -3,8 +3,8 @@ import 'package:project4/core/widget/custom_text_form_field.dart';
 import 'package:project4/features/receipt/presentation/controller/receipt_process_controller.dart';
 
 class ReceiptData extends StatelessWidget {
-  ReceiptData({super.key});
-  final receiptController = ReceiptProcessController();
+  const ReceiptData({super.key, required this.receiptController});
+  final ReceiptProcessController receiptController;
 
   @override
   Widget build(BuildContext context) {
