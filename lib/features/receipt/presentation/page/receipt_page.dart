@@ -44,7 +44,6 @@ class _ReceiptPageState extends State<ReceiptPage> {
                           topRight: Radius.circular(20),
                         ),
                         child:
-                            // receiptController.selectedImage == null
                             imagePickerController.selectedImage == null
                                 ? Text("Please Select image")
                                 : GestureDetector(
