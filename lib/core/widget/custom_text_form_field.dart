@@ -8,6 +8,8 @@ class CustomTextFormField extends StatelessWidget {
     required this.controller,
     this.keyboardType,
     this.validator,
+    this.icon,
+    this.maxLines,
   });
 
   final String labelText;
@@ -15,6 +17,8 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final TextInputType? keyboardType;
   final String? Function(String?)? validator;
+  final IconButton? icon;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +26,11 @@ class CustomTextFormField extends StatelessWidget {
       controller: controller,
       keyboardType: keyboardType,
       validator: validator,
+      maxLines: maxLines,
       decoration: InputDecoration(
         labelText: labelText,
+        suffixIcon: icon,
+
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintText: hintText,
       ),

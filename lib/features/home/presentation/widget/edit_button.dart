@@ -3,9 +3,17 @@ import 'package:project4/core/text/text_styles.dart';
 import 'package:project4/core/theme/app_palette.dart';
 
 class EditButton extends StatelessWidget {
-  const EditButton({super.key, required this.text, required this.onPressed});
+  const EditButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+    this.height,
+    this.width,
+  });
   final String text;
   final VoidCallback onPressed;
+  final double? height;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +21,7 @@ class EditButton extends StatelessWidget {
       onPressed: onPressed,
       style: ButtonStyle(
         backgroundColor: WidgetStateProperty.all(AppPalette.whiteColor),
-        fixedSize: WidgetStateProperty.all(Size(43, 28)),
+        fixedSize: WidgetStateProperty.all(Size(width ?? 43, height ?? 28)),
         side: WidgetStateProperty.all(
           BorderSide(color: AppPalette.blueColor, width: 2),
         ),

@@ -8,6 +8,8 @@ class AppPalette {
   static const Color blackLight = Color(0xff333333);
   static const Color darkBlueColor = Color(0xff2C3240);
   static const Color blueLight = Color(0xff64728E);
+  static const Color iconColor = Color(0xffA7E4FF);
+  static const Color blueColor2 = Color(0xff2290C0);
 
   static const Color checked = Color(0xffD5EEF9);
   static const Color unchecked = Color(0xffC5C6CC);

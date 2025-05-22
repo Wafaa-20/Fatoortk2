@@ -1,16 +1,19 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:project4/core/controller/image_picker_controller.dart';
 import 'package:project4/core/extension/git_size_screen.dart';
+import 'package:project4/core/text/text_styles.dart';
+import 'package:project4/core/theme/app_palette.dart';
 import 'package:project4/core/widget/custom_button.dart';
 import 'package:project4/features/home/presentation/widget/edit_button.dart';
+import 'package:project4/features/receipt/data/model/receipt_model.dart';
 import 'package:project4/features/receipt/presentation/controller/receipt_process_controller.dart';
 import 'package:project4/features/receipt/presentation/widget/image_option.dart';
+import 'package:project4/features/receipt/presentation/widget/load_image.dart';
 import 'package:project4/features/receipt/presentation/widget/receipt_data.dart';
 
 class ReceiptPage extends StatefulWidget {
-  const ReceiptPage({super.key});
+  const ReceiptPage({super.key, this.receipt});
+  final ReceiptModel? receipt;
 
   @override
   State<ReceiptPage> createState() => _ReceiptPageState();
@@ -22,7 +25,10 @@ class _ReceiptPageState extends State<ReceiptPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('New Receipt')),
+      appBar: AppBar(
+        title: const Text('New Receipt'),
+        automaticallyImplyLeading: false,
+      ),
 
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -38,47 +44,7 @@ class _ReceiptPageState extends State<ReceiptPage> {
                   ),
                   child: Column(
                     children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                        ),
-                        child:
-                            imagePickerController.selectedImage == null
-                                ? Text("Please Select image")
-                                : GestureDetector(
-                                  onTap: () {
-                                    showDialog(
-                                      context: context,
-                                      builder:
-                                          (context) => Dialog(
-                                            child: InteractiveViewer(
-                                              child: Image.file(
-                                                File(
-                                                  imagePickerController
-                                                      .selectedImage!
-                                                      .path,
-                                                ),
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          ),
-                                    );
-                                  },
-                                  child: SizedBox(
-                                    height: 134,
-                                    width: context.getWidth(),
-                                    child: Image.file(
-                                      File(
-                                        imagePickerController
-                                            .selectedImage!
-                                            .path,
-                                      ),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                      ),
+                      LoadImage(imagePickerController: imagePickerController),
                       const SizedBox(height: 10),
 
                       Padding(
@@ -86,12 +52,13 @@ class _ReceiptPageState extends State<ReceiptPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('Add Image'),
+                            Text('Add Image', style: TextStyles.inter80014),
                             EditButton(
                               text: 'Upload',
                               onPressed: () {
                                 showModalBottomSheet(
                                   context: context,
+                                  backgroundColor: AppPalette.whiteColor,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.vertical(
                                       top: Radius.circular(20),
@@ -100,21 +67,21 @@ class _ReceiptPageState extends State<ReceiptPage> {
 
                                   builder: (BuildContext context) {
                                     return SizedBox(
-                                      height: context.getHeight() * 0.50,
-                                      child: Column(
-                                        children: [
-                                          ImageOption(
-                                            imageController:
-                                                imagePickerController,
-                                            receiptController:
-                                                receiptController,
-                                            imageState: (receipt) {
-                                              receiptController.fillControllers(
-                                                receipt!,
-                                              );
-                                            },
-                                          ),
-                                        ],
+                                      height: context.getHeight() * 0.40,
+                                      width: context.getWidth(),
+                                      child: ImageOption(
+                                        imageController: imagePickerController,
+                                        receiptController: receiptController,
+                                        imageState: (receipt) {
+                                          receiptController.selectedImage =
+                                              imagePickerController
+                                                  .selectedImage;
+                                          receiptController.receiptModel =
+                                              receipt;
+                                          receiptController.fillControllers(
+                                            receipt!,
+                                          );
+                                        },
                                       ),
                                     );
                                   },
@@ -137,6 +104,7 @@ class _ReceiptPageState extends State<ReceiptPage> {
               },
               child: Text("Save"),
             ),
+            SizedBox(height: 50),
           ],
         ),
       ),

@@ -4,16 +4,24 @@ class CustomListTile extends StatelessWidget {
   const CustomListTile({
     super.key,
 
-    required this.child,
+    this.child,
     required this.title,
     this.onTap,
+    this.subTitle,
   });
-  final Widget child;
-  final Widget title;
+  final Widget? child;
+  final Widget? title;
+  final Widget? subTitle;
+
   final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(leading: child, title: title, onTap: onTap);
+    return ListTile(
+      leading: child,
+      title: title,
+      subtitle: subTitle,
+      onTap: onTap,
+    );
   }
 }

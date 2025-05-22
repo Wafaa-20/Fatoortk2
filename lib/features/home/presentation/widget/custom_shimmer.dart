@@ -5,6 +5,7 @@ import 'package:shimmer/shimmer.dart';
 
 class CustomShimmer extends StatelessWidget {
   const CustomShimmer({super.key});
+  //  final ReceiptModel receipt;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +13,7 @@ class CustomShimmer extends StatelessWidget {
       baseColor: AppPalette.background1,
       highlightColor: AppPalette.labelText,
       enabled: true,
-      period: Duration(milliseconds: 200),
+      period: Duration(milliseconds: 400),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

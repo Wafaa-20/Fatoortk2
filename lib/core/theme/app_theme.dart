@@ -23,7 +23,6 @@ class AppTheme {
       style: ElevatedButton.styleFrom(
         foregroundColor: AppPalette.whiteColor,
         backgroundColor: AppPalette.blueColor,
-        fixedSize: Size(327, 48),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         textStyle: TextStyles.cairo60020,
       ),

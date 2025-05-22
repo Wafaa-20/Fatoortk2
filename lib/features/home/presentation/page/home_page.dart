@@ -3,12 +3,15 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:project4/core/controller/image_picker_controller.dart';
 import 'package:project4/core/theme/app_palette.dart';
+import 'package:project4/core/widget/custom_list_tile.dart';
 import 'package:project4/features/home/presentation/widget/custom_shimmer.dart';
 import 'package:project4/features/home/presentation/widget/drawer_list_tile.dart';
 import 'package:project4/features/home/presentation/widget/receipt_grade_view.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, this.name, this.phoneNum});
+  final String? name;
+  final String? phoneNum;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -16,6 +19,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool isLoading = true;
+
   @override
   void initState() {
     super.initState();
@@ -47,6 +51,7 @@ class _HomePageState extends State<HomePage> {
                       color: AppPalette.whiteColor,
                     ),
                   ),
+                 
                 ],
               ),
             ),

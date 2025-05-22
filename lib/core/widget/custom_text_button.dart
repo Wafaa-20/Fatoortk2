@@ -13,6 +13,7 @@ class CustomTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: onPressed,
+
       child: Text(text, maxLines: 3, softWrap: true),
     );
   }

@@ -10,8 +10,9 @@ import 'package:project4/features/auth/presentation/widget/custom_pinput.dart';
 import 'package:project4/features/auth/presentation/widget/text_list_tile.dart';
 
 class OtpPage extends StatelessWidget {
-  const OtpPage({super.key, required this.controller});
-  final TextEditingController controller;
+  const OtpPage({super.key, required this.name, required this.phone});
+  final String name;
+  final String phone;
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +25,7 @@ class OtpPage extends StatelessWidget {
             Image.asset("asset/image/otp.png"),
             SizedBox(height: 39),
             Text(AppText.enterCode, style: TextStyles.cairo900),
-            TextListTile(
-              title: AppText.digitCode,
-              subtitle: "+966${controller.text}",
-            ),
+            TextListTile(title: AppText.digitCode, subtitle: "+966$phone"),
             SizedBox(height: 40),
 
             CustomPinput(),
@@ -41,7 +39,11 @@ class OtpPage extends StatelessWidget {
             ),
             CustomTextButton(
               onPressed: () {
-                // customPush(context, SignupPage());
+                // customPush(context, SignupPage(
+                //   name: name,
+                //   phone: phone,
+
+                // ));
               },
               text: AppText.resendCode,
             ),

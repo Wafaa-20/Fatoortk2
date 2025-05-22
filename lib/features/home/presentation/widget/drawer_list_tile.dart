@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project4/core/controller/image_picker_controller.dart';
 import 'package:project4/core/widget/custom_list_tile.dart';
 import 'package:project4/features/home/presentation/controller/home_controller.dart';
 
@@ -10,7 +11,14 @@ class DrawerListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomListTile(title: Text("Edit Profile"), child: Icon(Icons.edit)),
+        CustomListTile(
+          title: Text("Edit Profile"),
+          child: Icon(Icons.edit),
+          onTap: () {
+            ImagePickerController();
+          },
+        ),
+
         CustomListTile(
           title: Text("Language"),
           child: Icon(Icons.language),

@@ -7,6 +7,7 @@ class AuthController {
   final formKey2 = GlobalKey<FormState>();
   final phoneController = TextEditingController();
   final nameController = TextEditingController();
+
   final RegExp phoneRegExp = RegExp(r'^(?:[+0]9)?[0-9]{10}$');
   // final RegExp nameRegExp = RegExp(r'^[a-zA-Z]+ [a-zA-Z]+$');
   final nameRegExp = RegExp(r'^[\p{L} ]+$', unicode: true);
@@ -33,7 +34,9 @@ class AuthController {
 
   void moveToOtp(BuildContext context, GlobalKey<FormState> keys) {
     if (keys.currentState!.validate()) {
-      customPushReplacement(context, OtpPage(controller: phoneController));
+      final name = nameController.text;
+      final phone = phoneController.text;
+      customPushReplacement(context, OtpPage(name: name, phone: phone));
     }
   }
 }

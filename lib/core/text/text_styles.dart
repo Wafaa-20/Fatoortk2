@@ -14,6 +14,11 @@ class TextStyles {
     fontSize: 20,
     color: AppPalette.blueLight,
   );
+  static final cairo70024 = GoogleFonts.cairo(
+    fontWeight: FontWeight.w700,
+    fontSize: 24,
+    color: AppPalette.blueColor,
+  );
 
   static final cairo900 = GoogleFonts.cairo(
     fontWeight: FontWeight.w900,
@@ -46,11 +51,21 @@ class TextStyles {
     fontSize: 20,
     color: AppPalette.whiteColor,
   );
+  static final cairo60016 = GoogleFonts.cairo(
+    fontWeight: FontWeight.w600,
+    fontSize: 16,
+    color: AppPalette.blueColor,
+  );
 
   //Inter
   static final inter90024 = GoogleFonts.inter(
     fontWeight: FontWeight.w900,
     fontSize: 24,
+    color: AppPalette.blackColor,
+  );
+   static final inter80014 = GoogleFonts.inter(
+    fontWeight: FontWeight.w800,
+    fontSize: 14,
     color: AppPalette.blackColor,
   );
   static final inter40012 = GoogleFonts.inter(
